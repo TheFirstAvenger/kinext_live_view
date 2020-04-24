@@ -1,0 +1,38 @@
+<section class="phx-hero">
+  <h1><%= gettext "Welcome to %{name}!", name: "Kinext LiveView" %></h1>
+</section>
+<ul>
+  <li>Context loaded: <%= @context != nil %><%= if @device_count > 0 do %> (<%= @device_count %> devices)<% end %></li>
+  <li>Device loaded: <%= @device != nil %></li>
+  <li>Device tilt degrees: <%= @tilt_degrees %></li>
+  <li>Current LED Color: <%= @current_led_color %></li>
+  <li>Video loaded: <%= @video != nil %></li>
+</ul>
+
+<%= if !@context do %>
+  <button type="button" phx-click="load_context">Load Context</button>
+<% end %>
+<%= if @context && !@device && @device_count > 0 do %>
+  <button type="button" phx-click="load_device">Load Device</button>
+<% end %>
+<%= if @device do %>
+  <%= if @tilt_degrees < 31 do %><button type="button" phx-click="tilt_up">Tilt up</button><% end %>
+  <%= if @tilt_degrees > -31 do %><button type="button" phx-click="tilt_down">Tilt down</button><% end %>
+  <%= f = form_for :led_color, "#", [phx_change: :set_led_color, style: "display: inline;"] %>
+  <%= select f, :led_color, Kinext.Device.led_colors() %>
+  </form>
+<% end %>
+<%= if @device && !@video do %>
+  <button type="button" phx-click="load_video">Load Video</button>
+<% end %>
+<%= if @video && !@continue_video do %>
+  <button type="button" phx-click="get_picture">Get Picture</button>
+  <button type="button" phx-click="start_video">Start Video</button>
+<% end %>
+<%= if @video && @continue_video do %>
+  <button type="button" phx-click="stop_video">Stop Video</button>
+<% end %>
+
+<%= if @frame do %>
+  <img src="<%=  ~s(data:image/png;base64,) <> Base.encode64(@frame) %>">
+<% end %>
