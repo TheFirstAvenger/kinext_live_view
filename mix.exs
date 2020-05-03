@@ -44,20 +44,21 @@ defmodule KinextLiveview.MixProject do
       {:mix_test_watch, "~> 1.0.2", only: :dev, runtime: false},
       {:dialyxir, "~> 1.0.0", only: :dev, runtime: false},
       {:ex_doc, "~> 0.21.3", only: :dev, runtime: false},
-      {:phoenix, github: "phoenixframework/phoenix", override: true},
+      {:phoenix, "~> 1.5.0"},
       {:phoenix_ecto, "~> 4.1.0"},
       {:ecto_sql, "~> 3.4.2"},
       {:postgrex, ">= 0.0.0"},
-      {:phoenix_live_view, "~> 0.11.1"},
       {:floki, "~> 0.26.0", only: :test},
-      {:phoenix_html, "~> 2.14.1"},
+      {:phoenix_html, "~> 2.14"},
       {:phoenix_live_reload, "~> 1.2.1", only: :dev},
-      {:phoenix_live_dashboard, github: "phoenixframework/phoenix_live_dashboard"},
+      {:phoenix_live_dashboard, "~> 0.2.0"},
+      # Let the dashboard bring in LiveView
+      # {:phoenix_live_view, ">= 0.0.0"},
       {:telemetry_metrics, "~> 0.4.2"},
       {:telemetry_poller, "~> 0.5.0"},
       {:gettext, "~> 0.17.4"},
       {:jason, "~> 1.2.0"},
-      {:plug_cowboy, "~> 2.1.2"}
+      {:plug_cowboy, "~> 2.2"}
     ]
   end
 
