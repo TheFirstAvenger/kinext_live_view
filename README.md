@@ -1,5 +1,21 @@
 # KinextLiveview
 
+An example app showcasing the [Kinext](https://hexdocs.pm/kinext) library for Elixir with [Phoenix LiveView](https://phoenixframework.org).
+
+To run this demo, you must first install the [`libfreenect`](https://github.com/OpenKinect/libfreenect) library.
+
+On MacOS, you can install it with homebrew:
+
+```sh
+brew install libfreenect
+```
+
+You should also install [`XQuartz`](https://www.xquartz.org/):
+
+```sh
+brew cask install xquartz
+```
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
